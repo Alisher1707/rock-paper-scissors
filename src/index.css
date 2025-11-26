@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+html {
+  overflow: hidden;
+}
+
+@layer components {
+  /* Rock - Red circles */
+  .circle-rock-outer {
+    background: linear-gradient(to bottom, #dc2e4e, #dc2e4e) !important;
+    box-shadow: 0 8px 0 #9d1634 !important;
+  }
+
+  .circle-rock-inner {
+    background: linear-gradient(to bottom, #e8445f, #e8445f) !important;
+  }
+
+  /* Paper - Blue circles */
+  .circle-paper-outer {
+    background: linear-gradient(to bottom, #4865f4, #4865f4) !important;
+    box-shadow: 0 8px 0 #2a4097 !important;
+  }
+
+  .circle-paper-inner {
+    background: linear-gradient(to bottom, #5671f5, #5671f5) !important;
+  }
+
+  /* Scissors - Yellow circles */
+  .circle-scissors-outer {
+    background: linear-gradient(to bottom, #eca922, #eca922) !important;
+    box-shadow: 0 8px 0 #c17b16 !important;
+  }
+
+  .circle-scissors-inner {
+    background: linear-gradient(to bottom, #f3b236, #f3b236) !important;
+  }
+
+  /* White inner circle */
+  .circle-white {
+    background: linear-gradient(to bottom, #f3f3f3, white) !important;
+    box-shadow: inset 0 6px 0 rgba(0, 0, 0, 0.15) !important;
+  }
+}

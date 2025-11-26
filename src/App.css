@@ -1,0 +1,37 @@
+/* Rock - Blue */
+.circle-rock-outer {
+  background: linear-gradient(to bottom, #4664f4, #4f5ade);
+}
+
+.circle-rock-inner {
+  background: linear-gradient(to bottom, #5b6fe3, #4864f4);
+}
+
+/* Paper - Yellow */
+.circle-paper-outer {
+  background: linear-gradient(to bottom, #ebb448, #e59e1e);
+}
+
+.circle-paper-inner {
+  background: linear-gradient(to bottom, #f0b753, #ebb243);
+}
+
+/* Scissors - Red */
+.circle-scissors-outer {
+  background: linear-gradient(to bottom, #e84561, #d93250);
+}
+
+.circle-scissors-inner {
+  background: linear-gradient(to bottom, #ea5265, #e8445f);
+}
+
+/* White inner circle */
+.circle-white {
+  background: linear-gradient(to bottom, #f3f3f3, white);
+  box-shadow: inset 0 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Shadow for outer circles */
+.circle-shadow {
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
