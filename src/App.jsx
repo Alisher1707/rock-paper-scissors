@@ -329,30 +329,30 @@ function App() {
       {/* Rules Modal */}
       {showRules && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-white text-gray-800 rounded-2xl p-10 max-w-md mx-4">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold uppercase">Rules</h2>
+          <div className="bg-white text-gray-800 rounded-2xl px-12 pt-16 pb-28 max-w-sm w-full mx-4">
+            <div className="flex items-center justify-between mb-12">
+              <h2 className="text-5xl font-bold uppercase">Rules</h2>
               <button
                 onClick={() => setShowRules(false)}
-                className="text-gray-400 hover:text-gray-600 text-3xl leading-none"
+                className="text-gray-400 hover:text-gray-600 text-4xl leading-none -mt-5"
               >
                 ×
               </button>
             </div>
-            <div className="space-y-3 text-base text-gray-600">
+            <div className="space-y-5 text-xl text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
               {gameMode === 'basic' ? (
                 <>
-                  <p><span className="font-semibold text-gray-800">Rock</span> beats <span className="font-semibold text-gray-800">Scissors</span></p>
-                  <p><span className="font-semibold text-gray-800">Scissors</span> beats <span className="font-semibold text-gray-800">Paper</span></p>
-                  <p><span className="font-semibold text-gray-800">Paper</span> beats <span className="font-semibold text-gray-800">Rock</span></p>
+                  <p><span className="font-bold text-red-600">🪨 Rock</span> <span className="text-gray-400">crushes</span> <span className="font-bold text-yellow-600">✂️ Scissors</span></p>
+                  <p><span className="font-bold text-yellow-600">✂️ Scissors</span> <span className="text-gray-400">cuts</span> <span className="font-bold text-blue-600">📄 Paper</span></p>
+                  <p><span className="font-bold text-blue-600">📄 Paper</span> <span className="text-gray-400">covers</span> <span className="font-bold text-red-600">🪨 Rock</span></p>
                 </>
               ) : (
                 <>
-                  <p><span className="font-semibold text-gray-800">Rock</span> beats <span className="font-semibold text-gray-800">Scissors & Lizard</span></p>
-                  <p><span className="font-semibold text-gray-800">Paper</span> beats <span className="font-semibold text-gray-800">Rock & Spock</span></p>
-                  <p><span className="font-semibold text-gray-800">Scissors</span> beats <span className="font-semibold text-gray-800">Paper & Lizard</span></p>
-                  <p><span className="font-semibold text-gray-800">Lizard</span> beats <span className="font-semibold text-gray-800">Paper & Spock</span></p>
-                  <p><span className="font-semibold text-gray-800">Spock</span> beats <span className="font-semibold text-gray-800">Scissors & Rock</span></p>
+                  <p><span className="font-bold text-red-600">🪨 Rock</span> <span className="text-gray-400">crushes</span> <span className="font-bold text-yellow-600">✂️ Scissors</span> & <span className="font-bold text-purple-600">🦎 Lizard</span></p>
+                  <p><span className="font-bold text-blue-600">📄 Paper</span> <span className="text-gray-400">covers</span> <span className="font-bold text-red-600">🪨 Rock</span> & <span className="font-bold text-cyan-600">🖖 Spock</span></p>
+                  <p><span className="font-bold text-yellow-600">✂️ Scissors</span> <span className="text-gray-400">cuts</span> <span className="font-bold text-blue-600">📄 Paper</span> & <span className="font-bold text-purple-600">🦎 Lizard</span></p>
+                  <p><span className="font-bold text-purple-600">🦎 Lizard</span> <span className="text-gray-400">eats</span> <span className="font-bold text-blue-600">📄 Paper</span> & <span className="text-gray-400">poisons</span> <span className="font-bold text-cyan-600">🖖 Spock</span></p>
+                  <p><span className="font-bold text-cyan-600">🖖 Spock</span> <span className="text-gray-400">smashes</span> <span className="font-bold text-yellow-600">✂️ Scissors</span> & <span className="text-gray-400">vaporizes</span> <span className="font-bold text-red-600">🪨 Rock</span></p>
                 </>
               )}
             </div>
