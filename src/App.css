@@ -1,28 +1,46 @@
-/* Rock - Blue */
+/* Rock - Red */
 .circle-rock-outer {
-  background: linear-gradient(to bottom, #4664f4, #4f5ade);
-}
-
-.circle-rock-inner {
-  background: linear-gradient(to bottom, #5b6fe3, #4864f4);
-}
-
-/* Paper - Yellow */
-.circle-paper-outer {
-  background: linear-gradient(to bottom, #ebb448, #e59e1e);
-}
-
-.circle-paper-inner {
-  background: linear-gradient(to bottom, #f0b753, #ebb243);
-}
-
-/* Scissors - Red */
-.circle-scissors-outer {
   background: linear-gradient(to bottom, #e84561, #d93250);
 }
 
-.circle-scissors-inner {
+.circle-rock-inner {
   background: linear-gradient(to bottom, #ea5265, #e8445f);
+}
+
+/* Paper - Blue */
+.circle-paper-outer {
+  background: linear-gradient(to bottom, #4664f4, #4f5ade);
+}
+
+.circle-paper-inner {
+  background: linear-gradient(to bottom, #5b6fe3, #4864f4);
+}
+
+/* Scissors - Yellow/Orange */
+.circle-scissors-outer {
+  background: linear-gradient(to bottom, #ebb448, #e59e1e);
+}
+
+.circle-scissors-inner {
+  background: linear-gradient(to bottom, #f0b753, #ebb243);
+}
+
+/* Lizard - Purple */
+.circle-lizard-outer {
+  background: linear-gradient(to bottom, #834fe0, #7634d9) !important;
+}
+
+.circle-lizard-inner {
+  background: linear-gradient(to bottom, #8b5ce8, #8349e0) !important;
+}
+
+/* Spock - Cyan */
+.circle-spock-outer {
+  background: linear-gradient(to bottom, #3fb7cd, #2d9db4) !important;
+}
+
+.circle-spock-inner {
+  background: linear-gradient(to bottom, #4fc1d6, #3fb8cd) !important;
 }
 
 /* White inner circle */

@@ -8,8 +8,9 @@ function App() {
   const [result, setResult] = useState(null)
   const [gameState, setGameState] = useState('choosing')
   const [showComputerChoice, setShowComputerChoice] = useState(false)
+  const [gameMode, setGameMode] = useState('basic') // 'basic' or 'advanced'
 
-  const choices = [
+  const basicChoices = [
     {
       id: 'rock',
       name: 'Rock',
@@ -33,13 +34,38 @@ function App() {
     }
   ]
 
+  const advancedChoices = [
+    ...basicChoices,
+    {
+      id: 'lizard',
+      name: 'Lizard',
+      icon: '/svg/lizard icon.svg',
+      outerClass: 'circle-lizard-outer',
+      innerClass: 'circle-lizard-inner'
+    },
+    {
+      id: 'spock',
+      name: 'Spock',
+      icon: '/svg/spock icon.svg',
+      outerClass: 'circle-spock-outer',
+      innerClass: 'circle-spock-inner'
+    }
+  ]
+
+  const choices = gameMode === 'advanced' ? advancedChoices : basicChoices
+
   const getWinner = (player, computer) => {
     if (player === computer) return 'draw'
-    if (
-      (player === 'rock' && computer === 'scissors') ||
-      (player === 'paper' && computer === 'rock') ||
-      (player === 'scissors' && computer === 'paper')
-    ) {
+
+    const winConditions = {
+      rock: ['scissors', 'lizard'],
+      paper: ['rock', 'spock'],
+      scissors: ['paper', 'lizard'],
+      lizard: ['paper', 'spock'],
+      spock: ['scissors', 'rock']
+    }
+
+    if (winConditions[player]?.includes(computer)) {
       return 'win'
     }
     return 'lose'
@@ -60,9 +86,14 @@ function App() {
       setResult(gameResult)
 
       if (gameResult === 'win') {
-        setScore(score + 1)
-      } else if (gameResult === 'lose') {
-        setScore(Math.max(0, score - 1))
+        const newScore = score + 1
+        setScore(newScore)
+        // Switch to advanced mode when score reaches 12
+        if (newScore >= 1 && gameMode === 'basic') {     // 1 => 12
+          setGameMode('advanced')
+        }
+      // } else if (gameResult === 'lose') {
+      //   setScore(Math.max(0, score - 1))--------------------------------------close the minus score --------------
       }
     }, 1000)
   }
@@ -84,7 +115,7 @@ function App() {
             <h1 className="text-[2rem] font-bold uppercase leading-[1.9rem] tracking-tight">
               Rock<br />
               Paper<br />
-              Scissors
+              Scissors{gameMode === 'advanced' && (<><br />Lizard<br />Spock</>)}
             </h1>
           </div>
           <div className="bg-white rounded-lg px-10 py-4">
@@ -100,51 +131,133 @@ function App() {
         {/* Game Area */}
         {gameState === 'choosing' && (
           <div className="relative">
-            <div className="flex justify-center items-start gap-16 mb-16">
-              {/* Paper - Left */}
-              <button
-                onClick={() => handleChoice(choices[1])}
-                className="transition-transform hover:scale-105"
-              >
-                <div className={`w-44 h-44 rounded-full flex items-center justify-center ${choices[1].outerClass}`}>
-                  <div className={`w-[7rem] h-[7rem] rounded-full flex items-center justify-center ${choices[1].innerClass}`}>
-                    <div className="w-28 h-28 rounded-full flex items-center justify-center circle-white">
-                      <img src={choices[1].icon} alt="Paper" className="w-18 h-18" />
+            {gameMode === 'basic' ? (
+              <>
+                <div className="flex justify-center items-start gap-16 mb-16">
+                  {/* Paper - Left (Blue) */}
+                  <button
+                    onClick={() => handleChoice(choices[1])}
+                    className="transition-transform hover:scale-105"
+                  >
+                    <div className="w-44 h-44 rounded-full flex items-center justify-center circle-paper-outer">
+                      <div className="w-[7rem] h-[7rem] rounded-full flex items-center justify-center circle-paper-inner">
+                        <div className="w-28 h-28 rounded-full flex items-center justify-center circle-white">
+                          <img src="/svg/Paper Icon.svg" alt="Paper" className="w-18 h-18" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </button>
+                  </button>
 
-              {/* Scissors - Right */}
-              <button
-                onClick={() => handleChoice(choices[2])}
-                className="transition-transform hover:scale-105"
-              >
-                <div className={`w-44 h-44 rounded-full flex items-center justify-center ${choices[2].outerClass}`}>
-                  <div className={`w-[7rem] h-[7rem] rounded-full flex items-center justify-center ${choices[2].innerClass}`}>
-                    <div className="w-28 h-28 rounded-full flex items-center justify-center circle-white">
-                      <img src={choices[2].icon} alt="Scissors" className="w-18 h-18" />
+                  {/* Scissors - Right (Yellow) */}
+                  <button
+                    onClick={() => handleChoice(choices[2])}
+                    className="transition-transform hover:scale-105"
+                  >
+                    <div className="w-44 h-44 rounded-full flex items-center justify-center circle-scissors-outer">
+                      <div className="w-[7rem] h-[7rem] rounded-full flex items-center justify-center circle-scissors-inner">
+                        <div className="w-28 h-28 rounded-full flex items-center justify-center circle-white">
+                          <img src="/svg/Scissors Icon.svg" alt="Scissors" className="w-18 h-18" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </button>
                 </div>
-              </button>
-            </div>
 
-            {/* Rock - Bottom Center */}
-            <div className="flex justify-center">
-              <button
-                onClick={() => handleChoice(choices[0])}
-                className="transition-transform hover:scale-105"
-              >
-                <div className={`w-44 h-44 rounded-full flex items-center justify-center ${choices[0].outerClass}`}>
-                  <div className={`w-[7rem] h-[7rem] rounded-full flex items-center justify-center ${choices[0].innerClass}`}>
-                    <div className="w-28 h-28 rounded-full flex items-center justify-center circle-white">
-                      <img src={choices[0].icon} alt="Rock" className="w-18 h-18" />
+                {/* Rock - Bottom Center (Red) */}
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => handleChoice(choices[0])}
+                    className="transition-transform hover:scale-105"
+                  >
+                    <div className="w-44 h-44 rounded-full flex items-center justify-center circle-rock-outer">
+                      <div className="w-[7rem] h-[7rem] rounded-full flex items-center justify-center circle-rock-inner">
+                        <div className="w-28 h-28 rounded-full flex items-center justify-center circle-white">
+                          <img src="/svg/Rock Icon.svg" alt="Rock" className="w-18 h-18" />
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </>
+            ) : (
+              /* Advanced Mode - Pentagon Layout */
+              <div className="relative w-full h-[450px] flex items-center justify-center">
+                {/* Scissors - Top Center (Yellow) */}
+                <button
+                  onClick={() => handleChoice(choices[2])}
+                  className="absolute transition-transform hover:scale-105"
+                  style={{ top: '-40px', left: '50%', transform: 'translateX(-50%)' }}
+                >
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center circle-scissors-outer">
+                    <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center circle-scissors-inner">
+                      <div className="w-24 h-24 rounded-full flex items-center justify-center circle-white">
+                        <img src="/svg/Scissors Icon.svg" alt="Scissors" className="w-14 h-14" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </button>
-            </div>
+                </button>
+
+                {/* Paper - Top Right (Blue) */}
+                <button
+                  onClick={() => handleChoice(choices[1])}
+                  className="absolute transition-transform hover:scale-105"
+                  style={{ top: '90px', right: '110px' }}
+                >
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center circle-paper-outer">
+                    <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center circle-paper-inner">
+                      <div className="w-24 h-24 rounded-full flex items-center justify-center circle-white">
+                        <img src="/svg/Paper Icon.svg" alt="Paper" className="w-14 h-14" />
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Spock - Top Left (Cyan) */}
+                <button
+                  onClick={() => handleChoice(choices[4])}
+                  className="absolute transition-transform hover:scale-105"
+                  style={{ top: '90px', left: '110px' }}
+                >
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #3fb7cd, #2d9db4)' }}>
+                    <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #4fc1d6, #3fb8cd)' }}>
+                      <div className="w-24 h-24 rounded-full flex items-center justify-center circle-white">
+                        <img src="/svg/spock icon.svg" alt="Spock" className="w-14 h-14" />
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Rock - Bottom Right (Red) */}
+                <button
+                  onClick={() => handleChoice(choices[0])}
+                  className="absolute transition-transform hover:scale-105"
+                  style={{ bottom: '20px', right: '100px' }}
+                >
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center circle-rock-outer">
+                    <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center circle-rock-inner">
+                      <div className="w-24 h-24 rounded-full flex items-center justify-center circle-white">
+                        <img src="/svg/Rock Icon.svg" alt="Rock" className="w-14 h-14" />
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Lizard - Bottom Left (Purple) */}
+                <button
+                  onClick={() => handleChoice(choices[3])}
+                  className="absolute transition-transform hover:scale-105"
+                  style={{ bottom: '20px', left: '100px' }}
+                >
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #834fe0, #7634d9)' }}>
+                    <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #8b5ce8, #8349e0)' }}>
+                      <div className="w-24 h-24 rounded-full flex items-center justify-center circle-white">
+                        <img src="/svg/lizard icon.svg" alt="Lizard" className="w-14 h-14" />
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            )}
           </div>
         )}
 
@@ -227,9 +340,21 @@ function App() {
               </button>
             </div>
             <div className="space-y-3 text-base text-gray-600">
-              <p><span className="font-semibold text-gray-800">Rock</span> beats <span className="font-semibold text-gray-800">Scissors</span></p>
-              <p><span className="font-semibold text-gray-800">Scissors</span> beats <span className="font-semibold text-gray-800">Paper</span></p>
-              <p><span className="font-semibold text-gray-800">Paper</span> beats <span className="font-semibold text-gray-800">Rock</span></p>
+              {gameMode === 'basic' ? (
+                <>
+                  <p><span className="font-semibold text-gray-800">Rock</span> beats <span className="font-semibold text-gray-800">Scissors</span></p>
+                  <p><span className="font-semibold text-gray-800">Scissors</span> beats <span className="font-semibold text-gray-800">Paper</span></p>
+                  <p><span className="font-semibold text-gray-800">Paper</span> beats <span className="font-semibold text-gray-800">Rock</span></p>
+                </>
+              ) : (
+                <>
+                  <p><span className="font-semibold text-gray-800">Rock</span> beats <span className="font-semibold text-gray-800">Scissors & Lizard</span></p>
+                  <p><span className="font-semibold text-gray-800">Paper</span> beats <span className="font-semibold text-gray-800">Rock & Spock</span></p>
+                  <p><span className="font-semibold text-gray-800">Scissors</span> beats <span className="font-semibold text-gray-800">Paper & Lizard</span></p>
+                  <p><span className="font-semibold text-gray-800">Lizard</span> beats <span className="font-semibold text-gray-800">Paper & Spock</span></p>
+                  <p><span className="font-semibold text-gray-800">Spock</span> beats <span className="font-semibold text-gray-800">Scissors & Rock</span></p>
+                </>
+              )}
             </div>
           </div>
         </div>
