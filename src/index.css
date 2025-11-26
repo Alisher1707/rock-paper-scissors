@@ -44,6 +44,24 @@ html {
     background: linear-gradient(to bottom, #f3b236, #eeaa2c) !important;
   }
 
+  /* Lizard - Purple circles */
+  .circle-lizard-outer {
+    background: linear-gradient(to bottom, #834fe0, #7634d9) !important;
+  }
+
+  .circle-lizard-inner {
+    background: linear-gradient(to bottom, #8b5ce8, #8349e0) !important;
+  }
+
+  /* Spock - Cyan circles */
+  .circle-spock-outer {
+    background: linear-gradient(to bottom, #3fb7cd, #2d9db4) !important;
+  }
+
+  .circle-spock-inner {
+    background: linear-gradient(to bottom, #4fc1d6, #3fb8cd) !important;
+  }
+
   /* White inner circle */
   .circle-white {
     background: linear-gradient(to bottom, #f3f3f3, white) !important;
