@@ -19,32 +19,29 @@ html {
 @layer components {
   /* Rock - Red circles */
   .circle-rock-outer {
-    background: linear-gradient(to bottom, #dc2e4e, #dc2e4e) !important;
-    box-shadow: 0 8px 0 #9d1634 !important;
+    background: linear-gradient(to bottom, #dc2e4e, #c92542) !important;
   }
 
   .circle-rock-inner {
-    background: linear-gradient(to bottom, #e8445f, #e8445f) !important;
+    background: linear-gradient(to bottom, #e8445f, #e03551) !important;
   }
 
   /* Paper - Blue circles */
   .circle-paper-outer {
-    background: linear-gradient(to bottom, #4865f4, #4865f4) !important;
-    box-shadow: 0 8px 0 #2a4097 !important;
+    background: linear-gradient(to bottom, #4865f4, #3f5ce8) !important;
   }
 
   .circle-paper-inner {
-    background: linear-gradient(to bottom, #5671f5, #5671f5) !important;
+    background: linear-gradient(to bottom, #5671f5, #4f69f4) !important;
   }
 
   /* Scissors - Yellow circles */
   .circle-scissors-outer {
-    background: linear-gradient(to bottom, #eca922, #eca922) !important;
-    box-shadow: 0 8px 0 #c17b16 !important;
+    background: linear-gradient(to bottom, #eca922, #e3a119) !important;
   }
 
   .circle-scissors-inner {
-    background: linear-gradient(to bottom, #f3b236, #f3b236) !important;
+    background: linear-gradient(to bottom, #f3b236, #eeaa2c) !important;
   }
 
   /* White inner circle */
