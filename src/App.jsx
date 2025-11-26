@@ -201,7 +201,7 @@ function App() {
                 <button
                   onClick={() => handleChoice(choices[1])}
                   className="absolute transition-transform hover:scale-105"
-                  style={{ top: '90px', right: '110px' }}
+                  style={{ top: '90px', right: '150px' }}
                 >
                   <div className="w-32 h-32 rounded-full flex items-center justify-center circle-paper-outer">
                     <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center circle-paper-inner">
@@ -216,7 +216,7 @@ function App() {
                 <button
                   onClick={() => handleChoice(choices[4])}
                   className="absolute transition-transform hover:scale-105"
-                  style={{ top: '90px', left: '110px' }}
+                  style={{ top: '90px', left: '150px' }}
                 >
                   <div className="w-32 h-32 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #3fb7cd, #2d9db4)' }}>
                     <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #4fc1d6, #3fb8cd)' }}>
@@ -231,7 +231,7 @@ function App() {
                 <button
                   onClick={() => handleChoice(choices[0])}
                   className="absolute transition-transform hover:scale-105"
-                  style={{ bottom: '20px', right: '100px' }}
+                  style={{ bottom: '60px', right: '180px' }}
                 >
                   <div className="w-32 h-32 rounded-full flex items-center justify-center circle-rock-outer">
                     <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center circle-rock-inner">
@@ -246,7 +246,7 @@ function App() {
                 <button
                   onClick={() => handleChoice(choices[3])}
                   className="absolute transition-transform hover:scale-105"
-                  style={{ bottom: '20px', left: '100px' }}
+                  style={{ bottom: '60px', left: '200px' }}
                 >
                   <div className="w-32 h-32 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #834fe0, #7634d9)' }}>
                     <div className="w-[6.5rem] h-[6.5rem] rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #8b5ce8, #8349e0)' }}>
